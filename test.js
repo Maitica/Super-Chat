@@ -10,7 +10,7 @@ const BOT_MSGS = [
   "I feel sleepy! :("
 ];
  
-// Icons made by Freepik from www.flaticon.com
+// Icons made by Freepik from www.flaticon.com gfdgfdg
 const BOT_IMG = https://image.flaticon.com/icons/svg/327/327779.svg;
 const PERSON_IMG = https://image.flaticon.com/icons/svg/145/145867.svg;
 const BOT_NAME = "BOT";
