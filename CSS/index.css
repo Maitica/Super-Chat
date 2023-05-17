@@ -1,0 +1,23 @@
+h1 { 
+    color: red;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+
+.yellow-title {
+    color: yellow;
+}
+
+.big-title{
+    font-size: 60px;
+}
+
+.container {
+    background-color: blueviolet;
+    color: white;
+    padding: 20px;
+    border: 8px solid black;    
+    border-left: 20px dotted red;
+    margin: 30px;
+}

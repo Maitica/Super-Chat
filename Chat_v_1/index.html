@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chatprogramm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #chatBox {
+      height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="chatBox"></div>
+  <input type="text" id="messageInput" placeholder="Nachricht eingeben">
+  <button id="sendButton">Senden</button>
+
+  <script src="chat.js"></script>
+</body>
+</html>

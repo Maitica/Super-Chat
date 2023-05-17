@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatprogramm</title>
+  <style>
+    #userList {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chatprogramm</h1>
+
+  <div id="chatroom">
+    <h2>Chatraum</h2>
+    <div id="userList">
+      <h3>Aktive Benutzer:</h3>
+      <ul id="activeUsers"></ul>
+    </div>
+    <div id="messageList">
+      <h3>Nachrichten:</h3>
+      <ul id="messages"></ul>
+    </div>
+    <div id="inputSection">
+      <input type="text" id="usernameInput" placeholder="Benutzername" />
+      <button onclick="createOrChangeUsername()">Benutzernamen erstellen/ändern</button>
+      <br>
+      <input type="text" id="messageInput" placeholder="Nachricht eingeben" />
+      <button onclick="sendMessage()">Senden</button>
+    </div>
+  </div>
+
+  <script src="chat.js"></script>
+</body>
+</html>
