@@ -9,6 +9,29 @@
     <script src="/script.js"></script>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <header>
+        <h1>Chat</h1>
+     <br>
+     <div><h4>Aktive Benutzer</h4></div>
+        <div class="active-users" id="active-users"></div>
+     <br>
+        <label class="benutzername">Dein Benutzername:</label>
+        <input type="text" id="username">
+        <button class="erstellen" onclick="createUsername()">Erstellen</button>
+        <button class="aendern" onclick="changeUsername()">Ändern</button>
+   </header>
+         
+   
+   <main>                          
+  <div id="message-tiles"></div>     
+   </main>
+    
+    <div class="new-message"> <input type="text" id="message" placeholder="Gib eine Nachricht ein">
+    <button onclick="sendMessage()">Senden</button></div>    
+    
+    <footer>
+    <div ></div><p> Copyrigth by Patrick Allemann </p></div>     
+    </footer> 
+  </body>
 </body>
 </html>
