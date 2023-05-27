@@ -39,13 +39,27 @@ function displayMessage(data) {
   messagesDiv.appendChild(messageElement);
 }
 
+function displayActiveUsers(data) {
+  let userList = document.getElementById("userList");
+  userList.innerHTML = ""; // Clear previous user list
+
+  let activeUsersData = JSON.parse(data);
+  let activeUsers = activeUsersData.activeUsers;
+
+  activeUsers.forEach((username) => {
+    let userItem = document.createElement("li");
+    userItem.textContent = username;
+    userList.appendChild(userItem);
+  });
+}
+
 const WebSocket = require("ws");
 const redis = require("redis");
 let publisher;
 
 const clients = [];
 
-// Initialize the WebSocket server
+// Intiiate the websocket server
 const initializeWebsocketServer = async (server) => {
   const client = redis.createClient({
     socket: {
@@ -74,7 +88,19 @@ const onConnection = (ws) => {
   ws.on("message", (message) => onClientMessage(ws, message));
   ws.send("Hello Client!");
 
+  ws.on("error", (error) => {
+    console.error("WebSocket error:", error);
+  });
+
+  ws.on("pong", () => {
+    // Received a pong response from the client, indicating it's still active
+    ws.isAlive = true;
+  });
+
+  ws.username = ""; // Initialize the username property
+
   clients.push(ws);
+  sendActiveUsers(); // Send the active users to the client
 };
 
 // If a new message is received, the onClientMessage function is called
@@ -105,6 +131,26 @@ const onClose = (ws) => {
   if (index !== -1) {
     clients.splice(index, 1);
   }
+  sendActiveUsers(); // Update the active users after a client is disconnected
+};
+
+// Send the active users to all connected clients
+const sendActiveUsers = () => {
+  let activeUsers = clients.map((client) => client.username); // Get the usernames from WebSocket connections
+  let activeUsersData = {
+    activeUsers: activeUsers
+  };
+  let activeUsersMessage = JSON.stringify(activeUsersData);
+  clients.forEach((client) => {
+    client.send(activeUsersMessage);
+  });
+};
+
+// Get the username associated with a WebSocket connection
+const getUsernameFromWebSocket = (ws) => {
+  // Use the value from the username input field as the username
+  let usernameInput = document.getElementById("username");
+  return usernameInput.value;
 };
 
 module.exports = { initializeWebsocketServer };
