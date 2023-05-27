@@ -1,16 +1,11 @@
-const WebSocket = require("ws");
-const redis = require("redis");
-
 const socket = new WebSocket("ws://localhost:3000");
-let publisher;
-const clients = [];
 
 socket.addEventListener("open", (event) => {
   console.log("WebSocket connected!");
 });
 
 socket.addEventListener("message", (event) => {
-  console.log(`Received message: ${event.data}`);
+  displayMessage(event.data);
 });
 
 socket.addEventListener("close", (event) => {
@@ -21,12 +16,36 @@ socket.addEventListener("error", (event) => {
   console.error("WebSocket error:", event);
 });
 
-function sendToServer() {
-  let clientChat = document.getElementById("usermsg").value;
-  socket.send(clientChat);
-  console.log();
+function sendMessage() {
+  let usernameInput = document.getElementById("username");
+  let messageInput = document.getElementById("usermsg");
+  let username = usernameInput.value;
+  let message = messageInput.value;
+  let data = {
+    username: username,
+    message: message
+  };
+  socket.send(JSON.stringify(data));
+  messageInput.value = "";
 }
 
+function displayMessage(data) {
+  let messagesDiv = document.getElementById("messages");
+  let messageElement = document.createElement("p");
+  let messageData = JSON.parse(data);
+  let username = messageData.username;
+  let message = messageData.message;
+  messageElement.textContent = username + ": " + message;
+  messagesDiv.appendChild(messageElement);
+}
+
+const WebSocket = require("ws");
+const redis = require("redis");
+let publisher;
+
+const clients = [];
+
+// Initialize the WebSocket server
 const initializeWebsocketServer = async (server) => {
   const client = redis.createClient({
     socket: {
@@ -34,8 +53,10 @@ const initializeWebsocketServer = async (server) => {
       port: process.env.REDIS_PORT || "6379",
     },
   });
+  // This is the subscriber part
   const subscriber = client.duplicate();
   await subscriber.connect();
+  // This is the publisher part
   publisher = client.duplicate();
   await publisher.connect();
 
@@ -46,32 +67,43 @@ const initializeWebsocketServer = async (server) => {
   await publisher.publish("newMessage", "Hello from Redis!");
 };
 
+// If a new connection is established, the onConnection function is called
 const onConnection = (ws) => {
   console.log("New websocket connection");
   ws.on("close", () => onClose(ws));
   ws.on("message", (message) => onClientMessage(ws, message));
   ws.send("Hello Client!");
 
-  clients.push(ws); // Add the client to the clients array
+  clients.push(ws);
 };
 
+// If a new message is received, the onClientMessage function is called
 const onClientMessage = (ws, message) => {
   console.log("Message received: " + message);
-  publisher.publish("newMessage", message); // Send the message to the redis channel
+  let messageData = JSON.parse(message);
+  let username = messageData.username;
+  let messageContent = messageData.message;
+  let redisData = {
+    username: username,
+    message: messageContent
+  };
+  publisher.publish("newMessage", JSON.stringify(redisData));
 };
 
-const onRedisMessage = (channel, message) => {
+// If a new message from the redis channel is received, the onRedisMessage function is called
+const onRedisMessage = (message) => {
   console.log("Message received from Redis channel: " + message);
   clients.forEach((client) => {
-    client.send(message); // Send the message to all connected clients
+    client.send(message);
   });
 };
 
+// If a connection is closed, the onClose function is called
 const onClose = (ws) => {
   console.log("Websocket connection closed");
   const index = clients.indexOf(ws);
   if (index !== -1) {
-    clients.splice(index, 1); // Remove the client from the clients array
+    clients.splice(index, 1);
   }
 };
 
