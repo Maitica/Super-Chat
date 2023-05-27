@@ -26,8 +26,13 @@
   <div id="message-tiles"></div>     
    </main>
     
-    <div class="new-message"> <input type="text" id="message" placeholder="Gib eine Nachricht ein">
-    <button onclick="sendMessage()">Senden</button></div>    
+  <form id="message-area">
+
+  <textarea id="usermsg" rows="1" cols="30" ></textarea>
+      
+  <button type="submit" onclick="sendToServer()">Senden</button>
+      
+    </form>
     
     <footer>
     <div ></div><p> Copyrigth by Patrick Allemann </p></div>     

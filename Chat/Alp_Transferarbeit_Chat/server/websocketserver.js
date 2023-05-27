@@ -33,6 +33,7 @@ const onConnection = (ws) => {
   ws.on("message", (message) => onClientMessage(ws, message));
   ws.send("Hello Client!");
   //TODO!!!!!! Add the client to the clients array
+  ws.on("message",(message) => onClientMessage(ws, message));
 };
 
 // If a new message is received, the onClientMessage function is called

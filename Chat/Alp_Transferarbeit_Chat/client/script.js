@@ -2,7 +2,7 @@ const socket = new WebSocket("ws://localhost:3000");
 
 socket.addEventListener("open", (event) => {
   console.log("WebSocket connected!");
-  socket.send("Hello, server!");
+  // socket.send("Hello, server!");
 });
 
 socket.addEventListener("message", (event) => {
@@ -17,6 +17,17 @@ socket.addEventListener("error", (event) => {
   console.error("WebSocket error:", event);
 });
 
+//Message Senden zum Websocket
+function sendToServer(){
+    let clientChat = document.getElementById("usermsg").value;
+    socket.send(clientChat);
+    console.log()
+}
+
+
+
+//Alter Teil
+/*
 var username = "";
 var activeUsers = [];
 var messages = [];
@@ -95,3 +106,4 @@ messageTile.appendChild(p);
 messageTilesDiv.appendChild(messageTile);
 }
 }
+*/
