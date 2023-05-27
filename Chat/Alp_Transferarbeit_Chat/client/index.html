@@ -10,29 +10,18 @@
 </head>
 <body>
     <header>
-        <h1>Chat</h1>
-     <br>
-     <div><h4>Aktive Benutzer</h4></div>
-        <div class="active-users" id="active-users"></div>
-     <br>
-        <label class="benutzername">Dein Benutzername:</label>
-        <input type="text" id="username">
-        <button class="erstellen" onclick="createUsername()">Erstellen</button>
-        <button class="aendern" onclick="changeUsername()">Ändern</button>
-   </header>
-         
    
-   <main>                          
-  <div id="message-tiles"></div>     
-   </main>
-    
-  <form id="message-area">
+   </header>  
+   
+   <main>                 
+             
+    <h1>WebSocket Chat</h1>
 
-  <textarea id="usermsg" rows="1" cols="30" ></textarea>
-      
-  <button type="submit" onclick="sendToServer()">Senden</button>
-      
-    </form>
+    <div id="messages"></div>
+  
+    <input type="text" id="usermsg" />
+    <button onclick="sendMessage()">Send</button>
+  
     
     <footer>
     <div ></div><p> Copyrigth by Patrick Allemann </p></div>     

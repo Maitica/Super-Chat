@@ -2,11 +2,10 @@ const socket = new WebSocket("ws://localhost:3000");
 
 socket.addEventListener("open", (event) => {
   console.log("WebSocket connected!");
-  // socket.send("Hello, server!");
 });
 
 socket.addEventListener("message", (event) => {
-  console.log(`Received message: ${event.data}`);
+  displayMessage(event.data);
 });
 
 socket.addEventListener("close", (event) => {
@@ -17,14 +16,19 @@ socket.addEventListener("error", (event) => {
   console.error("WebSocket error:", event);
 });
 
-//Message Senden zum Websocket
-function sendToServer(){
-    let clientChat = document.getElementById("usermsg").value;
-    socket.send(clientChat);
-    console.log()
+function sendMessage() {
+  let messageInput = document.getElementById("usermsg");
+  let message = messageInput.value;
+  socket.send(message);
+  messageInput.value = "";
 }
 
-
+function displayMessage(message) {
+  let messagesDiv = document.getElementById("messages");
+  let messageElement = document.createElement("p");
+  messageElement.textContent = message;
+  messagesDiv.appendChild(messageElement);
+}
 
 //Alter Teil
 /*
