@@ -39,8 +39,14 @@ const onConnection = (ws) => {
 // If a new message is received, the onClientMessage function is called
 const onClientMessage = (ws, message) => {
   console.log("Message received: " + message);
-  //TODO!!!!!! Send the message to the redis channel
-  publisher.publish("newMessage", message);
+  let messageData = JSON.parse(message);
+  let username = messageData.username;
+  let messageContent = messageData.message;
+  let redisData = {
+    username: username,
+    message: messageContent
+  };
+  publisher.publish("newMessage", JSON.stringify(redisData));
 };
 
 // If a new message from the redis channel is received, the onRedisMessage function is called

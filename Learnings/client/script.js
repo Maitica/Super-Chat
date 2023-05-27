@@ -17,27 +17,18 @@ socket.addEventListener("error", (event) => {
 });
 
 function sendMessage() {
-    let usernameInput = document.getElementById("username");
-    let messageInput = document.getElementById("usermsg");
-    let username = usernameInput.value;
-    let message = messageInput.value;
-    let data = {
-      username: username,
-      message: message
-    };
-    socket.send(JSON.stringify(data));
-    messageInput.value = "";
-  }
+  let messageInput = document.getElementById("usermsg");
+  let message = messageInput.value;
+  socket.send(message);
+  messageInput.value = "";
+}
 
-  function displayMessage(data) {
-    let messagesDiv = document.getElementById("messages");
-    let messageElement = document.createElement("p");
-    let messageData = JSON.parse(data);
-    let username = messageData.username;
-    let message = messageData.message;
-    messageElement.textContent = username + ": " + message;
-    messagesDiv.appendChild(messageElement);
-  }
+function displayMessage(message) {
+  let messagesDiv = document.getElementById("messages");
+  let messageElement = document.createElement("p");
+  messageElement.textContent = message;
+  messagesDiv.appendChild(messageElement);
+}
 
 //Alter Teil
 /*
