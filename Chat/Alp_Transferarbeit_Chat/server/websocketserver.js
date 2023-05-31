@@ -3,6 +3,7 @@ const redis = require("redis");
 let publisher;
 
 const clients = [];
+const usernames = [];
 
 // Intiiate the websocket server
 const initializeWebsocketServer = async (server) => {
@@ -23,7 +24,7 @@ const initializeWebsocketServer = async (server) => {
   websocketServer.on("connection", onConnection);
   websocketServer.on("error", console.error);
   await subscriber.subscribe("newMessage", onRedisMessage);
-  await publisher.publish("newMessage", "Hello from Redis!");
+  // await publisher.publish("newMessage", "Hello from Redis!");
 };
 
 // If a new connection is established, the onConnection function is called
@@ -52,9 +53,11 @@ const onClientMessage = (ws, message) => {
 // If a new message from the redis channel is received, the onRedisMessage function is called
 const onRedisMessage = (message) => {
   console.log("Message received from Redis channel: " + message);
+  const messageobject = JSON.parse (message)
+  usernames.push (messageobject.username)
   clients.forEach((client) => {
-    client.send(message); // Send the message to all connected clients
-  });
+    client.send(JSON.stringify({usernames, message:messageobject})); // Send the message to all connected clients
+      });
 };
 
 // If a connection is closed, the onClose function is called
@@ -65,5 +68,6 @@ const onClose = (ws) => {
     clients.splice(index, 1); // Remove the client from the clients array
   }
 };
+
 
 module.exports = { initializeWebsocketServer };

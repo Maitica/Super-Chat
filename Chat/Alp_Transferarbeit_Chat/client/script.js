@@ -30,11 +30,14 @@ function sendMessage() {
   }
 
   function displayMessage(data) {
+    console.log(JSON.parse(data))
     let messagesDiv = document.getElementById("messages");
     let messageElement = document.createElement("p");
     let messageData = JSON.parse(data);
-    let username = messageData.username;
-    let message = messageData.message;
+    let username = messageData.message.username;
+    let message = messageData.message.message;
     messageElement.textContent = username + ": " + message;
     messagesDiv.appendChild(messageElement);
   }
+
+
