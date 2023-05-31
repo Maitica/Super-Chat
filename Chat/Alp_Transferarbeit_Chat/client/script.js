@@ -16,6 +16,7 @@ socket.addEventListener("error", (event) => {
   console.error("WebSocket error:", event);
 });
 
+
 function sendMessage() {
     let usernameInput = document.getElementById("username");
     let messageInput = document.getElementById("usermsg");
@@ -38,6 +39,7 @@ function sendMessage() {
     let message = messageData.message.message;
     messageElement.textContent = username + ": " + message;
     messagesDiv.appendChild(messageElement);
+
   }
 
 
