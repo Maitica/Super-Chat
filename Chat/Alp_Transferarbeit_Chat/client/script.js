@@ -31,7 +31,6 @@ function sendMessage() {
   }
 
   function displayMessage(data) {
-    console.log(JSON.parse(data))
     let messagesDiv = document.getElementById("messages");
     let messageElement = document.createElement("p");
     let messageData = JSON.parse(data);
@@ -40,6 +39,17 @@ function sendMessage() {
     messageElement.textContent = username + ": " + message;
     messagesDiv.appendChild(messageElement);
 
-  }
+    let usernameDisplay = document.getElementById("usernameDisplay");
+    usernameDisplay.innerHTML = ""; 
+
+    for (let i = 0; i < messageData.usernames.length; i++) {
+      let usernameElement = document.createElement("p");
+      usernameElement.textContent = "Benutzer " + (i + 1) + ": " + messageData.usernames[i];
+      usernameDisplay.appendChild(usernameElement);
+    }
+
+    console.log(username);
+    console.log(message);
+}
 
 

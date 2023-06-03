@@ -24,7 +24,7 @@ const initializeWebsocketServer = async (server) => {
   websocketServer.on("connection", onConnection);
   websocketServer.on("error", console.error);
   await subscriber.subscribe("newMessage", onRedisMessage);
-  await publisher.publish("newMessage", "Hello from Redis!");
+  // await publisher.publish("newMessage", "Hello from Redis!");
 };
 
 // If a new connection is established, the onConnection function is called
@@ -56,7 +56,7 @@ const onRedisMessage = (message) => {
   const messageobject = JSON.parse (message)
   usernames.push (messageobject.username)
   clients.forEach((client) => {
-    client.send({usernames, message}); // Send the message to all connected clients
+    client.send(JSON.stringify({usernames, message:messageobject})); // Send the message to all connected clients
       });
 };
 
