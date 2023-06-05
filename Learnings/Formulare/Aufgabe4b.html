@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+               .knopf {
+            background-color: rgb(0, 183, 255);
+            color: white;
+            padding: 10px 50px;
+            border: none;
+            border-radius: 5px;
+        }
+        .layout {
+    display: flex;
+    flex-direction: column;
+      }    
+    
+        </style>
+        <script>
+            
+        </script>
+</head>
+<body>
+    
+    <h1>Profile Update</h1>
+    
+    
+    <form class="layout">
+        <label for="username">Name</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="favColor">Favorite Color</label>
+        <input type="color" name="favColor"> 
+
+        <label for="checkbox">Subscribe to your newsletter</label>
+        <input type="checkbox" name="checkbox" id="checkbox">
+
+            
+        <button class="knopf" type="submit">Update Profile</button>
+      </form>
+      
+
+
+</body>
+</html>
