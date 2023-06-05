@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+               .knopf {
+            background-color: rgb(0, 183, 255);
+            color: white;
+            padding: 10px 50px;
+            border: none;
+            border-radius: 5px;
+        }
+        .layout {
+    display: flex;
+    flex-direction: column;
+      }
+      .layout input {
+        margin-bottom: 20px;
+      }
+    
+        </style>
+</head>
+<body>
+    
+    <h1>Contact Us</h1>
+    
+    
+    <form class="layout">
+        <label for="username"></label>
+        <input type="text" id="username" name="username" required placeholder="Your Name">
+      
+        <label for="email"></label>
+        <input type="email" id="email" name="email" required placeholder="Your Email">
+      
+        <label for="textarea"></label>
+        <textarea rows="10" placeholder="Your Message"></textarea>
+      
+              
+        <button class="knopf" type="submit">Submit</button>
+      </form>
+      
+
+
+</body>
+</html>
