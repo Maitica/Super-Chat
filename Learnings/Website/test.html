@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS für die horizontale Navigation */
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+        }
+
+        /* CSS für das Dropdown-Menü */
+        .navbar ul ul {
+            display: none;
+            position: absolute;
+        }
+
+        .navbar ul li:hover > ul {
+            display: inherit;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>
+                <a href="#">Mannschaften</a>
+                <ul>
+                    <li><a href="#">Interclub Damen</a></li>
+                    <li><a href="#">Interclub Herren</a></li>
+                    <li><a href="#">Firmensport</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Jahresprogramm</a></li>
+            <li><a href="#">Club Beitritt</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <li><a href="#">Standort</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
