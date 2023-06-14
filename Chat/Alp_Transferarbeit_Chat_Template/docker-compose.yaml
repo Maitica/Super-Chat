@@ -6,3 +6,12 @@ services:
     restart: always
     ports:
       - 6379:6379
+
+chat:
+  image: maitica/alp_transferarbeit_chat_template
+  restart: always
+  ports:
+    - 9900:3000
+  enviroment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
