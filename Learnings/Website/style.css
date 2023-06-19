@@ -1,4 +1,19 @@
     /* CSS für die horizontale Navigation */
+ 
+ 
+body {
+    display: flex;
+    flex-direction: row;
+ }
+header {
+    display: flex;
+    flex-grow: 5;
+}
+footer {
+    display: flex;
+    flex-grow: 10;
+}
+ 
     .navbar {
         display: flex;
         justify-content: center;

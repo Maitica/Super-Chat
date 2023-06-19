@@ -25,6 +25,7 @@ body {
   font-weight: bold;
   padding: 20px;
   flex-grow: 1;
+  flex-direction: column;
 }
 .box-1 {
   background-color: #f1c40f;

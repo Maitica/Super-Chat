@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: 100vh;
+  }
+
+  header {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    align-items: center;
+    border-radius: 5px;
+    }
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    padding: 15px;
+   
+    }
+
+.navbar ul li {
+    margin-right: 20px;
+    background-color: lightseagreen;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;     
+        }
+.navbar ul li:hover {
+background-color: blueviolet;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* CSS für das Dropdown-Menü */
+.navbar ul ul {
+    display: none;
+    position: absolute;
+}
+
+.navbar ul li:hover > ul {
+    display: inherit;
+}
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: 100vh;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: 100vh;
+  }
