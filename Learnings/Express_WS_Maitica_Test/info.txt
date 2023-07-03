@@ -1,0 +1,94 @@
+Stellen Sie sicher, dass Sie Node.js auf Ihrem System installiert haben.
+
+Navigieren Sie zu Ihrem Projektverzeichnis und öffnen Sie die Kommandozeile oder das Terminal.
+
+Installieren Sie die erforderlichen Pakete, indem Sie die folgenden Befehle ausführen:
+
+Copy code
+npm install express dotenv
+Erstellen Sie eine .env-Datei im Projektverzeichnis und fügen Sie die folgende Zeile hinzu:
+makefile
+Copy code
+PORT=3000
+Dies stellt sicher, dass der Server auf Port 3000 läuft. Sie können die Portnummer in der .env-Datei ändern, wenn Sie dies wünschen.
+
+Erstellen Sie eine JavaScript-Datei (z.B. server.js) und fügen Sie den folgenden Code ein:
+javascript
+Copy code
+require('dotenv').config();
+const express = require('express');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+// GET-Endpunkt für /hello
+app.get('/hello', (req, res) => {
+  res.send('Hallo Welt');
+});
+
+// GET-Endpunkt für /hello/:Maitica
+app.get('/hello/:Maitica', (req, res) => {
+  const { Maitica } = req.params;
+  res.send(`Hallo ${Maitica}`);
+});
+
+// Array für Benutzer
+let users = [];
+
+// GET-Endpunkt für /users
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+// POST-Endpunkt für /users
+app.post('/users', (req, res) => {
+  const user = req.body;
+  users.push(user);
+  res.send('Benutzer hinzugefügt');
+});
+
+// PUT-Endpunkt für /users/:id
+app.put('/users/:id', (req, res) => {
+  const { id } = req.params;
+  const updatedUser = req.body;
+  users = users.map((user) => {
+    if (user.id === id) {
+      return { ...user, ...updatedUser };
+    }
+    return user;
+  });
+  res.send('Benutzer aktualisiert');
+});
+
+// DELETE-Endpunkt für /users/:id
+app.delete('/users/:id', (req, res) => {
+  const { id } = req.params;
+  users = users.filter((user) => user.id !== id);
+  res.send('Benutzer gelöscht');
+});
+
+// Starten Sie den Server
+app.listen(port, () => {
+  console.log(`Webserver läuft auf Port ${port}`);
+});
+Speichern Sie die Datei und führen Sie den folgenden Befehl aus, um den Server zu starten:
+Copy code
+node server.js
+Jetzt haben Sie einen Webserver auf Port 3000 laufen. Hier sind die verfügbaren Endpunkte:
+
+
+Aufstarten:
+1: source $(brew --prefix nvm)/nvm.sh 
+2: npm install express dotenv         
+3: node websocket.js  
+4: localhost:3000
+
+
+
+Test:
+
+GET /hello: Gibt "Hallo Welt" als Antwort.
+GET /hello/:Maitica: Akzeptiert einen Parameter Maitica und gibt "Hallo {Maitica}" als Antwort.
+GET /users: Gibt das Array users als JSON-Antwort zurück.
+POST /users: Fügt einen Benutzer zum Array users hinzu.
+PUT /users/:id: Aktualisiert einen Benutzer im Array users basierend auf der angegebenen

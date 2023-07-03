@@ -1,0 +1,4 @@
+1: Webserver erstellen (webserver.js)
+2: Node JS Installieren: source $(brew --prefix nvm)/nvm.sh
+3: Express Webserver Installieren: npm install express express-ws
+4: Websocket starten mit Node.js: node webserver.js
