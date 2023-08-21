@@ -112,3 +112,18 @@ body {
         display: block;
     }
 }
+    /* Styling für den Tabellenkopf */
+    thead {
+      background-color: #f2f2f2;
+    }
+    
+    /* Styling für die Tabellenzeilen */
+    tr {
+      border-bottom: 1px solid #ddd;
+    }
+    
+    /* Styling für die Tabellenzellen */
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
