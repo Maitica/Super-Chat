@@ -64,9 +64,7 @@ body {
     background-color: white;
     margin: 5px;
   }
-  
-    
-  /* Stile für den Zustand des Burger-Menüs */
+
   .burger-menu.active .burger-icon:nth-child(2) {
     opacity: 0;
   }
@@ -92,7 +90,7 @@ body {
     width: 30px;
     height: 3px;
     background-color: black;
-    margin: 5px 0;
+    margin: 5px;
 }
 
 .menu-items {
@@ -131,20 +129,28 @@ body {
         display: block;
     }
 }
-    /* Styling für den Tabellenkopf */
+
+.main_titel{
+  text-align: center;
+  background-color: orange;
+  color: white;
+  padding: 10px;
+}
+ 
     thead {
-      background-color: #f2f2f2;
+      background-color: orange;
+      color:white;      
     }
     
-    /* Styling für die Tabellenzeilen */
+
     tr {
       border-bottom: 1px solid #ddd;
+      
     }
     
-    /* Styling für die Tabellenzellen */
     th, td {
-      padding: 8px;
-      text-align: left;
+      padding: 15px;
+      text-align: center;
     }
 
 footer {
