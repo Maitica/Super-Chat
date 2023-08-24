@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bei Fragen zum TC Saeli sind wir gerne via Kontaktanfrage erreichbar.">
+    <meta name="description" content="TC Saeli erfreut sich stetig neuen Clubmitgliedern / Klubmitglied werden.">
     <meta name="keywords" content="TC Saeli, Tennis, Verein, Sport, Interclub, Mannschaften, Jahresprogramm, Club Beitritt, Kontakt, Standort">
     <meta name="author" content="Patrick Allemann">
-    <title>Kontakt_Formular</title>
+    <title>Beitritt_Formular</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,15 +35,18 @@
         </ul>
     </nav>
     <main>
-        <h2 class="main_titel">Kontakt Anfrage</h2>      
-        <div class="contact-form">
-            <form>
-              <input type="text" name="name" placeholder="Dein Name" required />
-              <input type="email" name="email" placeholder="Deine E-Mail" required />
-              <textarea name="message" placeholder="Deine Nachricht" required></textarea>
-              <button type="submit">Senden</button>
-            </form>
-          </div>
+        <main>
+            <h2 class="main_titel">Beitritts Anfrage</h2>     
+            <p>Bist du an unserem Club interessiert, dann senden wir dir gerne weitere Informationen zu. Du kannst dich im Formular entsprechend eintragen.</p> 
+            <div class="contact-form">
+                <form>
+                  <input type="text" id="vorname" name="vorname" placeholder="Dein Vorname" required />
+                  <input type="text" id="name" name="name" placeholder="Dein Name" required />
+                  <input type="email" id="mail" name="email" placeholder="Deine E-Mail" required />
+                  <button type="submit" value="Submit">Senden</button>
+                </form>
+              </div>
+        </main>
     </main>
     <footer>        
         <a target="_blank" href="https://www.gotcourts.com/de/profile/club/tc-saeli-fustighalde"><img width="100px" src="GotCourts.png" /></a>
@@ -51,5 +54,6 @@
         <p>TC Saeli, Fustlighalde, 4600 Olten, Tel Clubhaus: 062 296 50 70</p>
         </footer>
     <script src="script.js"></script>
+    <script src="api_connector.js"></script>
 </body>
 </html>
