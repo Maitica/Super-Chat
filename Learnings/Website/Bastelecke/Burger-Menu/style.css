@@ -1,17 +1,35 @@
 /* Allgemeine Stile */
+* {
+  font-family: Roboto, sans-serif;
+  max-width: 1920px;
+ }
+
+header {
+  text-align: center;
+  background-color: orange;
+  border-radius: 10px;
+  color: white;
+}
+
+.header-image {
+  max-width: 100%;
+    height: auto; 
+}
+
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px;
   }
   
   .navbar {
     background-color: orange;
+    border-radius: 10px;
+    height: auto;
+    text-align: center;
   }
   
   .menu-items {
     list-style: none;
-    padding: 0;
-    margin: 0;
   }
   
   .menu-items li {
@@ -23,6 +41,7 @@ body {
     padding: 10px 20px;
     color: white;
     text-decoration: none;
+    border-radius: 10px;
   }
   
   /* Hover-Effekt */
@@ -127,3 +146,10 @@ body {
       padding: 8px;
       text-align: left;
     }
+
+footer {
+  border-radius: 10px;
+  background-color: orange;
+  padding: 10px;
+  text-align: center;
+}
