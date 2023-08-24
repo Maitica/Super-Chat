@@ -9,27 +9,29 @@ const getUsers = async () => {
   usersList.innerHTML = "";
   for (const user of users) {
     const li = document.createElement("li");
-    li.innerHTML = `${user.id} - ${user.username} - ${user.active}`;
+    li.innerHTML = `${user.id} - ${user.name} - ${user.email} - ${user.nachricht}`;
     usersList.appendChild(li);
   }
 };
 
 const postUser = async () => {
   const id = users[users.length - 1].id + 1;
-  const username = document.getElementById("username").value;
-  const active = document.getElementById("active").checked;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const nachricht = document.getElementById("nachricht").value;
 
   await fetch("http://localhost:3000/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id, username, active }),
+    body: JSON.stringify({ id, name, email, nachricht }),
   });
   await getUsers();
 
-  document.getElementById("username").value = "";
-  document.getElementById("active").checked = true;
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("nachricht").value = "";
 };
 
 document.addEventListener("DOMContentLoaded", () => {
