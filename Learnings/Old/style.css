@@ -1,77 +1,56 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Roboto, sans-serif;
-   } 
-
+    /* CSS für die horizontale Navigation */
+ 
+ 
 body {
-       display: flex;
-       flex-direction: column;
-       height: 100vh;
-   }
+    display: flex;
+    flex-direction: row;
+ }
 header {
-       background-color: grey;
-       padding: 20px;
-       text-align: center;
-   }
-main {
-       background-color: white;
-       padding: 20px;
-       flex-grow: 2;
-       overflow: auto;
-   }
+    display: flex;
+    flex-grow: 5;
+}
 footer {
-       background-color: grey;
-       padding: 20px;
-       text-align: center;
-   }
+    display: flex;
+    flex-grow: 10;
+}
+ 
+    .navbar {
+        display: flex;
+        justify-content: center;
+        background-color: gray;
+        align-items: center;
+                   }
 
+    .navbar ul {
+        display: flex;
+        list-style-type: none;
+        padding: 15px;
+       
+        }
 
-.message {
-       padding: 10px;
-       display: flex;
-   }
+    .navbar ul li {
+        margin-right: 20px;
+        background-color: orange;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;     
+            }
+.navbar ul li:hover {
+    background-color: blueviolet;
+}
 
-.message-tile {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-.sent-message {
-          background-color: #d2eaf0;
-          text-align: left;
-          border-radius: 10px;
-        }
-.received-message {
-          background-color: #f0e6d2;
-          text-align: right;
-          border-radius: 10px;
-        }
- .new-message {
-       padding: 10px;
-       display: flex;
-   }
- .new-message input {
-       flex-grow: 1;
-       padding: 10px;
-   }
- .new-message button {
-       width: 100px;
-       cursor: pointer;
-   }
-.active-users{
-       color: blue;
-       font-size: 12px;
-       text-decoration: underline;
-}
-.benutzername {
-  color: white;
-  font-size:12px;
-}
-.erstellen{
-  cursor: pointer;
-}
-.aendern{
-  cursor: pointer;
-}
+    .navbar ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* CSS für das Dropdown-Menü */
+    .navbar ul ul {
+        display: none;
+        position: absolute;
+    }
+
+    .navbar ul li:hover > ul {
+        display: inherit;
+    }
