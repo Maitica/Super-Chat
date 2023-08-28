@@ -12,8 +12,9 @@ mongoose.connect(mongoDBConnection, {
 
 const UserSchema = new mongoose.Schema({
   id: Number,
-  username: String,
-  active: Boolean,
+  name: String,
+  email: String,
+  nachricht: String,
 });
 
 const User = mongoose.model("User", UserSchema);
