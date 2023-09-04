@@ -1,0 +1,9 @@
+.my-text {
+            padding-left: 20px;
+            margin: 20px;
+            color: green
+}
+
+.my-text:hover{
+            color: red;
+}
